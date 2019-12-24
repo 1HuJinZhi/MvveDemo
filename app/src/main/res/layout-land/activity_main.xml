@@ -21,7 +21,7 @@
 
         <variable
             name="vm"
-            type="com.kunminx.puremusic.bridge.state.MainActivityViewModel" />
+            type="com.hujz.mvvedemo.bridge.state.MainActivityViewModel" />
 
     </data>
 

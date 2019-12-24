@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.hujz.mvvedemo.data.bean.TestAlbum
 import com.hujz.mvvedemo.player.notification.PlayerService
 import com.kunminx.player.PlayerController
+import com.kunminx.player.bean.base.BaseAlbumItem
+import com.kunminx.player.bean.base.BaseMusicItem
 import com.kunminx.player.bean.dto.ChangeMusic
 import com.kunminx.player.bean.dto.PlayingMusic
 import com.kunminx.player.contract.IPlayController
@@ -106,7 +108,7 @@ class PlayerManager : IPlayController<TestAlbum, TestAlbum.TestMusic> {
         return mController.getTrackTime(progress)
     }
 
-    override fun getAlbum(): TestAlbum {
+    override fun getAlbum(): TestAlbum? {
         return mController.album
     }
 

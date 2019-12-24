@@ -21,11 +21,11 @@
 
         <variable
             name="vm"
-            type="com.kunminx.puremusic.bridge.state.DrawerViewModel" />
+            type="com.hujz.mvvedemo.bridge.state.DrawerViewModel" />
 
         <variable
             name="click"
-            type="com.kunminx.puremusic.ui.page.DrawerFragment.ClickProxy" />
+            type="com.hujz.mvvedemo.ui.page.DrawerFragment.ClickProxy" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

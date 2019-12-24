@@ -22,11 +22,11 @@
 
         <variable
             name="click"
-            type="com.kunminx.puremusic.ui.page.MainFragment.ClickProxy" />
+            type="com.hujz.mvvedemo.ui.page.MainFragment.ClickProxy" />
 
         <variable
             name="vm"
-            type="com.kunminx.puremusic.bridge.state.MainViewModel" />
+            type="com.hujz.mvvedemo.bridge.state.MainViewModel" />
 
     </data>
 

@@ -21,6 +21,12 @@ android {
         enabled = true
     }
 
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
     defaultConfig {
         applicationId "com.hujz.mvvedemo"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
@@ -46,7 +52,6 @@ dependencies {
     implementation rootProject.ext.dependencies["core-ktx"]
 
     implementation rootProject.ext.dependencies["appcompat"]
-    implementation rootProject.ext.dependencies["constraintlayout"]
     implementation rootProject.ext.dependencies["recyclerview"]
 
     implementation rootProject.ext.dependencies["utilcodex"]
@@ -60,6 +65,9 @@ dependencies {
     compileOnly "androidx.lifecycle:lifecycle-viewmodel:2.1.0"
     compileOnly "androidx.lifecycle:lifecycle-livedata:2.1.0"
 //    compileOnly "androidx.paging:paging-runtime:2.1.0"
+
+    compileOnly 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    compileOnly 'com.google.android.material:material:1.2.0-alpha02'
 
     compileOnly 'androidx.navigation:navigation-runtime:2.1.0'
     compileOnly 'com.lwjlol.navigation:keep-fragmentstate:0.0.1'

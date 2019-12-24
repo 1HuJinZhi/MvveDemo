@@ -64,7 +64,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
             netState.setResponseCode(String.valueOf(response.getRawResponse().code()));
         }
         netState.setSuccess(true);
-        NetworkStateManager.getInstance().mNetworkStateCallback.setValue(netState);
+        NetworkStateManager.getInstance().networkStateCallback.setValue(netState);
     }
 
     @Override
@@ -80,6 +80,6 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
             netState.setResponseCode(String.valueOf(response.getRawResponse().code()));
         }
         netState.setSuccess(false);
-        NetworkStateManager.getInstance().mNetworkStateCallback.setValue(netState);
+        NetworkStateManager.getInstance().networkStateCallback.setValue(netState);
     }
 }

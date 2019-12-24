@@ -45,7 +45,8 @@ dependencies {
     implementation rootProject.ext.dependencies["core-ktx"]
 
     implementation rootProject.ext.dependencies["appcompat"]
-    implementation rootProject.ext.dependencies["constraintlayout"]
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
     implementation rootProject.ext.dependencies["recyclerview"]
 
     testImplementation rootProject.ext.dependencies["junit-test"]

@@ -36,7 +36,7 @@ class App : Application(), ViewModelStoreOwner {
     }
 
     fun getAppViewModelProvider(activity: Activity): ViewModelProvider {
-        checkNotNull(activity.application) { "Your activity/fragment is not yet attached to Application. You can't request ViewModel before onCreate call." }
+        checkNotNull(activity.applicationContext) { "Your activity/fragment is not yet attached to Application. You can't request ViewModel before onCreate call." }
         return ViewModelProvider(this, mFactory)
     }
 

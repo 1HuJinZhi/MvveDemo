@@ -45,7 +45,7 @@ public class NetworkStateManager implements DefaultLifecycleObserver {
         return sManager;
     }
 
-    public final UnPeekLiveData<NetState> mNetworkStateCallback = new UnPeekLiveData<>();
+    public final UnPeekLiveData<NetState> networkStateCallback = new UnPeekLiveData<>();
     private NetworkStateReceive mNetworkStateReceive;
 
 
