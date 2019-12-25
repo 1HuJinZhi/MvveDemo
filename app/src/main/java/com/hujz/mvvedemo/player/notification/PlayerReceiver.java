@@ -46,38 +46,38 @@ public class PlayerReceiver extends BroadcastReceiver {
             switch (keyEvent.getKeyCode()) {
                 case KeyEvent.KEYCODE_HEADSETHOOK:
                 case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
-                    PlayerManager.getInstance().togglePlay();
+                    PlayerManager.Companion.getInstance().togglePlay();
                     break;
                 case KeyEvent.KEYCODE_MEDIA_PLAY:
-                    PlayerManager.getInstance().playAudio();
+                    PlayerManager.Companion.getInstance().playAudio();
                     break;
                 case KeyEvent.KEYCODE_MEDIA_PAUSE:
-                    PlayerManager.getInstance().pauseAudio();
+                    PlayerManager.Companion.getInstance().pauseAudio();
                     break;
                 case KeyEvent.KEYCODE_MEDIA_STOP:
-                    PlayerManager.getInstance().clear();
+                    PlayerManager.Companion.getInstance().clear();
                     break;
                 case KeyEvent.KEYCODE_MEDIA_NEXT:
-                    PlayerManager.getInstance().playNext();
+                    PlayerManager.Companion.getInstance().playNext();
                     break;
                 case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
-                    PlayerManager.getInstance().playPrevious();
+                    PlayerManager.Companion.getInstance().playPrevious();
                     break;
             }
 
         } else {
 
             if (Objects.requireNonNull(intent.getAction()).equals(PlayerService.NOTIFY_PLAY)) {
-                PlayerManager.getInstance().playAudio();
+                PlayerManager.Companion.getInstance().playAudio();
             } else if (intent.getAction().equals(PlayerService.NOTIFY_PAUSE)
                     || intent.getAction().equals(android.media.AudioManager.ACTION_AUDIO_BECOMING_NOISY)) {
-                PlayerManager.getInstance().pauseAudio();
+                PlayerManager.Companion.getInstance().pauseAudio();
             } else if (intent.getAction().equals(PlayerService.NOTIFY_NEXT)) {
-                PlayerManager.getInstance().playNext();
+                PlayerManager.Companion.getInstance().playNext();
             } else if (intent.getAction().equals(PlayerService.NOTIFY_CLOSE)) {
-                PlayerManager.getInstance().clear();
+                PlayerManager.Companion.getInstance().clear();
             } else if (intent.getAction().equals(PlayerService.NOTIFY_PREVIOUS)) {
-                PlayerManager.getInstance().playPrevious();
+                PlayerManager.Companion.getInstance().playPrevious();
             }
         }
     }

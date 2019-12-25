@@ -37,6 +37,7 @@ class MainFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mMainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        mMusicRequestViewModel = ViewModelProviders.of(this).get(MusicRequestViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -50,7 +51,7 @@ class MainFragment : BaseFragment() {
             click = ClickProxy()
             vm = mMainViewModel
         }
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -117,7 +118,7 @@ class MainFragment : BaseFragment() {
         }
 
         DrawerCoordinateHelper.instance.openDrawer.observe(this, Observer {
-            mSharedViewModel.openOrCloseDrawer.setValue(true)
+            sharedViewModel.openOrCloseDrawer.setValue(true)
         })
     }
 
@@ -138,7 +139,7 @@ class MainFragment : BaseFragment() {
             // Activity 内部的事情在 Activity 内部消化，不要试图在 fragment 中调用和操纵 Activity 内部的东西。
             // 因为 Activity 端的处理后续可能会改变，并且可受用于更多的 fragment，而不单单是本 fragment。
 
-            mSharedViewModel.openOrCloseDrawer.value = true
+            sharedViewModel.openOrCloseDrawer.value = true
         }
 
         fun search() {

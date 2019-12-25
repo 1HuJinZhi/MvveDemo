@@ -31,7 +31,7 @@ class DrawerCoordinateHelper : DefaultLifecycleObserver, View.OnTouchListener {
 
         SharedViewModel.tagOfSecondaryPages.add(owner.javaClass.simpleName)
 
-        (owner as BaseFragment).mSharedViewModel.enableSwipeDrawer.value =
+        (owner as BaseFragment).sharedViewModel.enableSwipeDrawer.value =
             SharedViewModel.tagOfSecondaryPages.size == 0
     }
 
@@ -39,7 +39,7 @@ class DrawerCoordinateHelper : DefaultLifecycleObserver, View.OnTouchListener {
 
         SharedViewModel.tagOfSecondaryPages.remove(owner.javaClass.simpleName)
 
-        (owner as BaseFragment).mSharedViewModel.enableSwipeDrawer.value =
+        (owner as BaseFragment).sharedViewModel.enableSwipeDrawer.value =
             SharedViewModel.tagOfSecondaryPages.size == 0
     }
 

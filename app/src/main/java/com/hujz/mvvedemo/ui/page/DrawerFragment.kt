@@ -78,8 +78,8 @@ class DrawerFragment : BaseFragment() {
         mBinding.rv.adapter = mAdapter
 
         mInfoRequestViewModel.libraryLiveData.observe(this, Observer {
-            mInitDataCame = true
-            if (mAnimationLoaded && it != null) {
+            initDataCame = true
+            if (animationLoaded && it != null) {
                 mAdapter.list = it
                 mAdapter.notifyDataSetChanged()
             }

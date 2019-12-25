@@ -22,8 +22,11 @@ class MainActivity : BaseActivity() {
         mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        mBinding.lifecycleOwner = this
-        mBinding.vm = mainActivityViewModel
+        mBinding.apply {
+            mBinding.lifecycleOwner = this@MainActivity
+            mBinding.vm = mainActivityViewModel
+        }
+
 
         sharedViewModel.activityCanBeClosedDirectly.observe(
             this,
@@ -31,7 +34,7 @@ class MainActivity : BaseActivity() {
                 val nav = Navigation.findNavController(this, R.id.main_fragment_host)
                 when {
                     nav.currentDestination?.id == R.id.mainFragment -> nav.navigateUp()
-                    mBinding.dl?.isDrawerOpen(GravityCompat.START) == true -> mBinding.dl.closeDrawer(
+                    mBinding.dl?.isDrawerOpen(GravityCompat.START) == true -> mBinding.dl?.closeDrawer(
                         GravityCompat.START
                     )
                     else -> super.onBackPressed()

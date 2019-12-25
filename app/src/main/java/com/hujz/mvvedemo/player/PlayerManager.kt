@@ -25,7 +25,6 @@ class PlayerManager : IPlayController<TestAlbum, TestAlbum.TestMusic> {
     private lateinit var mContext: Context
 
     companion object {
-        @JvmStatic
         val instance: PlayerManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { PlayerManager() }
         private val mController: PlayerController<TestAlbum, TestAlbum.TestMusic> =
             PlayerController()
@@ -140,7 +139,7 @@ class PlayerManager : IPlayController<TestAlbum, TestAlbum.TestMusic> {
         return mController.playModeLiveData
     }
 
-    override fun getRepeatMode(): Enum<*> {
+    override fun getRepeatMode(): Enum<*>? {
         return mController.repeatMode
     }
 

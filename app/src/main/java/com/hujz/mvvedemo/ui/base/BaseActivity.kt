@@ -1,6 +1,7 @@
 package com.hujz.mvvedemo.ui.base
 
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.hujz.mvvedemo.bridge.callback.SharedViewModel
 import com.kunminx.architecture.data.manager.NetState
 import com.kunminx.architecture.data.manager.NetworkStateManager
 import com.kunminx.architecture.utils.AdaptScreenUtils
+import com.kunminx.architecture.utils.BarUtils
 import com.kunminx.architecture.utils.ScreenUtils
 
 /**
@@ -26,6 +28,9 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
+        BarUtils.setStatusBarLightMode(this, true)
 
         sharedViewModel = getAppViewModelProvider().get(SharedViewModel::class.java)
 

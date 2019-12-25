@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/drawerFragment"
-        android:name="com.kunminx.puremusic.ui.page.DrawerFragment"
+        android:name="com.hujz.mvvedemo.ui.page.DrawerFragment"
         android:label="fragment_drawer"
         tools:layout="@layout/fragment_drawer" />
 </navigation>

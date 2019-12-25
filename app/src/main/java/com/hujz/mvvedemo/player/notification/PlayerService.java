@@ -69,27 +69,27 @@ public class PlayerService extends Service {
             mPlayerCallHelper = new PlayerCallHelper(new PlayerCallHelper.PlayerCallHelperListener() {
                 @Override
                 public void playAudio() {
-                    PlayerManager.getInstance().playAudio();
+                    PlayerManager.Companion.getInstance().playAudio();
                 }
 
                 @Override
                 public boolean isPlaying() {
-                    return PlayerManager.getInstance().isPlaying();
+                    return PlayerManager.Companion.getInstance().isPlaying();
                 }
 
                 @Override
                 public boolean isPaused() {
-                    return PlayerManager.getInstance().isPaused();
+                    return PlayerManager.Companion.getInstance().isPaused();
                 }
 
                 @Override
                 public void pauseAudio() {
-                    PlayerManager.getInstance().pauseAudio();
+                    PlayerManager.Companion.getInstance().pauseAudio();
                 }
             });
         }
 
-        TestAlbum.TestMusic results = PlayerManager.getInstance().getCurrentPlayingMusic();
+        TestAlbum.TestMusic results = PlayerManager.Companion.getInstance().getCurrentPlayingMusic();
         if (results == null) {
             stopSelf();
             return START_NOT_STICKY;
@@ -104,7 +104,7 @@ public class PlayerService extends Service {
     private void createNotification(TestAlbum.TestMusic testMusic) {
         try {
             String title = testMusic.getTitle();
-            TestAlbum album = PlayerManager.getInstance().getAlbum();
+            TestAlbum album = PlayerManager.Companion.getInstance().getAlbum();
             String summary = album.getSummary();
 
             RemoteViews simpleContentView = new RemoteViews(
@@ -152,7 +152,7 @@ public class PlayerService extends Service {
             notification.bigContentView.setViewVisibility(R.id.player_previous, View.VISIBLE);
             notification.bigContentView.setViewVisibility(R.id.player_progress_bar, View.GONE);
 
-            boolean isPaused = PlayerManager.getInstance().isPaused();
+            boolean isPaused = PlayerManager.Companion.getInstance().isPaused();
             notification.contentView.setViewVisibility(R.id.player_pause, isPaused ? View.GONE : View.VISIBLE);
             notification.contentView.setViewVisibility(R.id.player_play, isPaused ? View.VISIBLE : View.GONE);
             notification.bigContentView.setViewVisibility(R.id.player_pause, isPaused ? View.GONE : View.VISIBLE);

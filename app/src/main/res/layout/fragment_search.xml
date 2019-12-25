@@ -21,11 +21,11 @@
 
         <variable
             name="click"
-            type="com.kunminx.puremusic.ui.page.SearchFragment.ClickProxy" />
+            type="com.hujz.mvvedemo.ui.page.SearchFragment.ClickProxy" />
 
         <variable
             name="vm"
-            type="com.kunminx.puremusic.bridge.state.SearchViewModel" />
+            type="com.hujz.mvvedemo.bridge.state.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
