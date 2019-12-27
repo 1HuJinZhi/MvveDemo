@@ -19,4 +19,5 @@ class MusicRequestViewModel : ViewModel() {
     fun requestFreeMusics() {
         HttpRequestManager.getInstance().getFreeMusic(freeMusicsLiveData)
     }
+
 }

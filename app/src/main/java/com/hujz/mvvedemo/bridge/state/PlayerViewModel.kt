@@ -41,15 +41,16 @@ class PlayerViewModel : ViewModel() {
         title.set(Utils.getApp().getString(R.string.app_name))
         artist.set(Utils.getApp().getString(R.string.app_name))
         placeHolder.set(ContextCompat.getDrawable(Utils.getApp(), R.drawable.bg_album_default))
-
-        when {
-            PlayerManager.instance.repeatMode == PlayingInfoManager.RepeatMode.LIST_LOOP -> playModeIcon.set(
-                MaterialDrawableBuilder.IconValue.REPEAT
-            )
-            PlayerManager.instance.repeatMode == PlayingInfoManager.RepeatMode.ONE_LOOP -> playModeIcon.set(
-                MaterialDrawableBuilder.IconValue.REPEAT_ONCE
-            )
-            else -> playModeIcon.set(MaterialDrawableBuilder.IconValue.SHUFFLE)
+        PlayerManager.instance.repeatMode.let {
+            when {
+                it === PlayingInfoManager.RepeatMode.LIST_LOOP -> playModeIcon.set(
+                    MaterialDrawableBuilder.IconValue.REPEAT
+                )
+                it === PlayingInfoManager.RepeatMode.ONE_LOOP -> playModeIcon.set(
+                    MaterialDrawableBuilder.IconValue.REPEAT_ONCE
+                )
+                else -> playModeIcon.set(MaterialDrawableBuilder.IconValue.SHUFFLE)
+            }
         }
     }
 }

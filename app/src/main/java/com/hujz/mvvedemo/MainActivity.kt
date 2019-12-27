@@ -12,7 +12,7 @@ import com.hujz.mvvedemo.ui.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 
-    lateinit var mainActivityViewModel: MainActivityViewModel
+    private lateinit var mainActivityViewModel: MainActivityViewModel
     private lateinit var mBinding: ActivityMainBinding
     private var isListened = false
 
@@ -26,7 +26,6 @@ class MainActivity : BaseActivity() {
             mBinding.lifecycleOwner = this@MainActivity
             mBinding.vm = mainActivityViewModel
         }
-
 
         sharedViewModel.activityCanBeClosedDirectly.observe(
             this,
@@ -53,7 +52,17 @@ class MainActivity : BaseActivity() {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (!isListened) {
-            sharedViewModel
+            // TODO tip 2：此处演示通过 UnPeekLiveData 来发送 生命周期安全的、事件源可追溯的 通知。
+
+            // 如果这么说还不理解的话，详见 https://xiaozhuanlan.com/topic/0168753249
+            // --------
+            // 与此同时，此处传达的另一个思想是 最少知道原则，
+            // fragment 内部的事情在 fragment 内部消化，不要试图在 Activity 中调用和操纵 Fragment 内部的东西。
+            // 因为 fragment 端的处理后续可能会改变，并且可受用于更多的 Activity，而不单单是本 Activity。
+
+            sharedViewModel.timeToAddSlideListener.value = true
+
+            isListened = true
         }
     }
 

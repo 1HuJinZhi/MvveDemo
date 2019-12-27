@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.blankj.utilcode.util.LogUtils
 import com.hujz.mvvedemo.R
 import com.hujz.mvvedemo.bridge.callback.SharedViewModel
 import com.hujz.mvvedemo.bridge.state.PlayerViewModel
@@ -48,6 +49,7 @@ class PlayerFragment : BaseFragment() {
         // 总之 不会因一致性问题造成 视图调用的空指针。
 
         // 如果这么说还不理解的话，详见 https://xiaozhuanlan.com/topic/9816742350
+
         mBinding = FragmentPlayerBinding.bind(view)
         mBinding.apply {
             click = ClickProxy()
@@ -58,6 +60,7 @@ class PlayerFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         sharedViewModel.timeToAddSlideListener.observe(this, Observer {
             (view.parent.parent as? SlidingUpPanelLayout)?.apply {
                 addPanelSlideListener(PlayerSlideListener(mBinding, this))
@@ -72,9 +75,9 @@ class PlayerFragment : BaseFragment() {
                         newState: SlidingUpPanelLayout.PanelState?
                     ) {
                         if (newState === SlidingUpPanelLayout.PanelState.EXPANDED)
-                            SharedViewModel.tagOfSecondaryPages.add(this.javaClass.name)
+                            SharedViewModel.tagOfSecondaryPages.add(this.javaClass.simpleName)
                         else
-                            SharedViewModel.tagOfSecondaryPages.remove(this.javaClass.name)
+                            SharedViewModel.tagOfSecondaryPages.remove(this.javaClass.simpleName)
                         sharedViewModel.enableSwipeDrawer.value =
                             SharedViewModel.tagOfSecondaryPages.size == 0
                     }
@@ -116,12 +119,12 @@ class PlayerFragment : BaseFragment() {
         })
 
         PlayerManager.instance.playModeLiveData.observe(this, Observer {
-            val tip = when (it) {
-                PlayingInfoManager.RepeatMode.LIST_LOOP -> {
+            val tip = when {
+                it === PlayingInfoManager.RepeatMode.LIST_LOOP -> {
                     mPlayerViewModel.playModeIcon.set(MaterialDrawableBuilder.IconValue.REPEAT)
                     R.string.play_repeat
                 }
-                PlayingInfoManager.RepeatMode.ONE_LOOP -> {
+                it === PlayingInfoManager.RepeatMode.ONE_LOOP -> {
                     mPlayerViewModel.playModeIcon.set(MaterialDrawableBuilder.IconValue.REPEAT_ONCE)
                     R.string.play_repeat_once
                 }
